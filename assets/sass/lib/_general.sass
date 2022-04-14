@@ -1,53 +1,70 @@
 //----ESTILOS GENERALES-----
 
 *
-    // border: 1px solid red
+    // border: 1px solid blue
 
 
 
 
 
 body
+    width: 100%
+    height: 100%
     font-size: 16px
     background-color: $rojo
     color: $blanco
+    padding-top: 3em
+    @media screen and (max-width: $tablet)
+        font-size: 15px
+        // background-color: pink
+    @media screen and (max-width: $movil)
+        padding-top: 2em
+        font-size: 14px
+        // background-color: cyan
     
 
 
 main
-    width: 100%
-    height: 100%
+    width: 900px
+    height: 500px
     display: flex
     flex-direction: column
-    padding-top: 3em
-    margin-left: 100px
+    margin: auto
+    // background-color: $blanco
+    @media screen and (max-width: $tablet)
+         width: 760px
+         height: 415px
     @media screen and (max-width: $movil)
-        padding-top: 2em
-        margin-left: 2em
-      
+        width: 310px
+        height: 605px
+    
 
-//RESPONSIVE PENDIENTE
-
-  
 
 
 .contenedor
+    position: relative
     display: flex
     border-radius: $radio
-    height: 456px
+    height: 100%
     width: 100%
+    // background-color: yellow
+    margin: auto
+    // @media screen and (max-width: $tablet)
+    //     height: 415px
+    //     width: 760px
     @media screen and (max-width: $movil)
-        display: block
-        width: 100%
-
-
-
-
-
-.reseteo
-    display: flex
-    width: 3em
-    align-items: flex-end
+         flex-direction: column
+         
+    
+.logo
+    // background-color: $blanco
+    height: 60px
+    margin-bottom: 0.2em
+    @media screen and (max-width: $tablet)
+        height: 45px
+        margin-bottom: 0.1em
+    @media screen and (max-width: $movil)
+        height: 35px
 
 
 
@@ -58,20 +75,37 @@ main
     background-color: $negro
     border-radius: $radio
     padding: 2em
-    width: 456px
+    min-width: 456px
+    max-width: 456px
     height: 456px
     display: grid
-    grid-template-columns: repeat(2, 1fr)
-    grid-template-row: repeat(2, 1fr)
-    grid-column-gap: 4px
-    grid-row-gap: 4px
-
+    grid-template-columns: 195px 195px
+    grid-template-row: 195px 195px
+    grid-column-gap: 5px
+    grid-row-gap: 5px
+    @media screen and (max-width: $tablet)
+        min-width: 415px
+        max-width: 415px
+        height: 415px
+        padding: 1em
+        grid-template-columns: 190px 190px
+        grid-template-row: 190px 190px
+        grid-column-gap: 2px
+        grid-row-gap: 2px
+    @media screen and (max-width: $movil)
+        min-width: 310px
+        max-width: 310px
+        height: 310px
+        padding: 1em
+        grid-template-columns: 140px 140px
+        grid-template-row: 140px 140px
+       
 
 
 .pieza
     width: 100%
     height: 100%
-    
+
 
 
 .P1
@@ -97,81 +131,145 @@ main
 
 .ventanas
     display: grid
-    grid-template-columns: repeat(7,1fr)
-    grid-template-rows: repeat(14,1fr)
+    min-width: 390px
+    max-width: 390px
+    height: 456px
+    grid-template-columns: 78px 78px 78px 78px 78px
+    grid-template-rows: 65px 65px 65px 65px 65px 65px 65px
     margin-left: 0.6em
-    grid-column-gap: 0.6em
-    grid-row-gap: 0.6em
+    // background-color: cyan
+    @media screen and (max-width: $tablet)
+        margin-left: 0
+        min-width: 328px
+        max-width: 335px
+        height: 415px
+        grid-template-columns: 67px 67px 67px 67px 67px
+        grid-template-rows: 59px 59px 59px 59px 59px 59px 59px
+        margin-left: 0.5em
+    @media screen and (max-width: $movil)
+        padding-top: 0.5em
+        min-width: 310px
+        max-width: 310px
+        height: 310px
+        grid-template-columns: 62px 62px 62px 62px 62px
+        grid-template-rows: 40px 40px 40px 40px 40px 40px 40px
+
+
+    
 
 .nivel
     background-color: $negro
     border-radius: $radio
-    width: 130px
-    height: 100%
-    grid-column: 1/4
-    grid-row: 1/5
+    grid-column: 1/3
+    grid-row: 1/3
+    width: 140px
     display: block
     text-align: center
-    padding-top: 30%
-    font-family: Rubik
+    padding-top: 35%
+    font-family: dm_sansbold
     font-weight: normal
-    font-size: 1em 
+    font-size: 1.3em 
     line-height: calc(1ex / 0.48)
     color: $blanco
+    @media screen and (max-width: $tablet)
+        grid-row: 1/3
+        grid-column: 1/3
+        width: 120px
+        font-size: 1.1em
+    @media screen and (max-width: $movil)
+        grid-row: 1/2
+        grid-column: 1/2
+        width: 80px
+        height: 40px
+        padding-top: 20%
+        
+        
 
-    
+ 
 
 
 .info
     display: flex    
     vertical-align: baseline
-    padding: 2em     
+    padding: 1em 2em 1em 1em   
     background-color: $blanco
     border-radius: $radio
-    grid-column: 1/6
-    grid-row: 5/15
-    width: 300px
-    height: 100%
+    grid-column: 1/5
+    grid-row: 3/8
     color: $negro
+    margin-top: 0.5em
     box-shadow: 3px 3px 5px $negro
+    @media screen and (max-width: $tablet)
+        grid-column: 1/5
+        grid-row: 3/8
+    @media screen and (max-width: $movil)  
+        grid-column: 1/5
+        grid-row: 2/8
+        margin-right: 3em
+        width: 240px
     
-
-p
-    align-self: flex-end
-    font-family: Rubik
-    font-weight: normal
-    font-size: 1em 
-    line-height: calc(1.2ex / 0.48)
-    color: $negro
     
-    
+ 
 
 .pic
+    border-radius: $radio
+    grid-column: 1/3
+    grid-row: 3/5
+    margin-left: 0.5em
+    margin-top: 1em
+    height: 160px
+    image-fit: cover
+    z-index: 1
+    @media screen and (max-width: $tablet)
+        height: 140px
+    @media screen and (max-width: $movil)
+        height: 110px
+        grid-row: 2/4
+   
+
+.modelos
     background-color: $blanco
     border-radius: $radio
-    grid-column: 4/7
-    grid-row: 3/15
-    width: 168px
-    height: auto
+    grid-column: 3/5
+    grid-row: 2/4
+    height: 160px
+    margin-left: 4em
     image-fit: cover
- 
+    @media screen and (max-width: $tablet)
+        margin-left: 3em
+        height: 150px
+    @media screen and (max-width: $movil) 
+        margin-left: 0
+        height: 110px
+        grid-row: 1/3
+        grid-column: 4/6
+
 
 //----VENTANA FINAL DE JUEGO-----
 
 
 #win_win
     position: absolute
-    top: 260px
-    left: 220px
+    top: 180px
+    left: 165px
     z-index: 1
-    width: 300px
+    width: 230px
     height: 100px
     background-color: $negro
     border-radius: $radio
     border: 0
     color: $blanco
     cursor: pointer
-    box-shadow: 3px 3px 5px $negro
+    @media screen and (max-width: $tablet)
+        top: 160px
+        left: 95px
+        width: 200px
+        height: 100px
+    @media screen and (max-width: $movil)
+        width: 170px
+        height: 80px
+        top: 115px
+        left: 68px
     
     
 
@@ -185,12 +283,46 @@ p
 //----RESETEO-----
 
 #reseteo
+    display: block
     background-color: $rojo
     border: 0
     color: $blanco
+    font-family: dm_sansbold
+    font-weight: normal
+    font-size: 1em
     cursor: pointer
     height: 2em
     align-self: flex-end
+    width: 54px
+    @media screen and (max-width: $tablet)
+        display: none
+
+        
+
+//----RESETEO EN RESPONSIVE-----
+
+.reset_res
+    display: inline-block
+    float: left
+    background-color: $rojo
+    border: 0
+    color: $blanco
+    font-family: dm_sansbold
+    font-weight: normal
+    cursor: pointer
+    height: 2em
+    min-width: 50px
+    font-size: 0.9em
+ 
+
+
+.reset_oculto
+    display: none
+    @media screen and (max-width: $tablet)
+        display: block
+
+        
+ 
 
 
 

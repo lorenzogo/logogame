@@ -6,25 +6,22 @@ window.onload = () => {
   let level = 0;
 
 
-
-
-
-
-
   //DATOS SOBRE DISEÑADORES (LATERAL)------------------------------------------
 
       // ARRAYS DATOS LOGOS POR CATEGORÍAS
 
-      let info = ['El logotipo de I love NY es un jeroglífico que fue creado por Milton Glaser', 
+      let info = ['El logotipo de I love NY es un jeroglífico que fue creado por Milton Glaser.', 
       'Cruz Novillo consultó amplia documentación sobre la simbología de otros partidos socialistas.',
       'En 1993, se lanzó el nuevo Windows 3.1. Junto con él se desarrolló una nueva marca, que fue la cara del sistema a lo largo de los años 90.',
       'El rombo, desde el diseño de Vasarely, ha desplazado a cualquier otro símbolo en la identificación corporativa de Renault.',
-      'Resuelve todos los puzzles de los distintos logotipos y aprende curiosidades sobre sus creadores'  
+      'Gira los cubos del puzzle para componer cada uno de los cuatro logos que aparecen en la imagen de la parte superior.'  
     ];
 
       let imagen = ["assets/images/NY_AUTOR.jpg","assets/images/PSOE_AUTOR.jpg", "assets/images/WINDOWS_AUTOR.jpg", "assets/images/RENAULT_AUTOR.jpg", "assets/images/BIENVENIDOS.jpg"];
 
       let alternativo = ["retrato de Milton Glaser", "retrato de Bill Gates", "retrato de Jean-Pierre Vasarely", "Icono de bienvenida"];
+
+      let instrucciones = ["assets/images/todos.jpg", "logotipos de I Love New York, Renault, PSOE y Windows 95"];
 
 
 
@@ -36,15 +33,10 @@ window.onload = () => {
           genVentama.innerHTML = `
           <div class="nivel">${level} de 4</div>
           <div class="info"><p>${info[designer]}</p></div>
+          <img src="${instrucciones[0]}" alt="${instrucciones[1]}" class="modelos">
           <img src="${imagen[designer]}" alt="${alternativo[designer]}" class="pic">
           `;}          
           pintarDatos(4);
-
-
-
-
-
-
 
 
    //CONTENIDO Y GENERACIÓN DINÁMICA HTML CUBOS------------------------------------------
@@ -160,66 +152,14 @@ window.onload = () => {
       `;
 
 
- 
-
-
-
-
-
   //COMBINACIONES GANADORAS-------------------------------
   
   let ganadora_A = ["A1", "A2", "A3","A4"];
-
   let ganadora_B = ["B1", "B2", "B3","B4"];
-
   let ganadora_C = ["C1", "C2", "C3","C4"];
-
   let ganadora_D = ["D1", "D2", "D3","D4"];
-
   
   let jugada = [];
-
-
-
-
-
-
-  //QUE PASA CUANDO ACERTAMOS------------------------------------------
-
-
-  function done_A () { 
-    for(numero_A=1;numero_A<5;numero_A++) {  
-      let borro_A= document.querySelector(`.A${numero_A}`);
-      borro_A.removeChild(borro_A.firstElementChild);
-      borro_A.insertAdjacentHTML('afterbegin', `<img id="logo_Resuelto" src="assets/images/DONE.jpg" alt="¡Bien hecho!"/>`);
-    }
-  };
-
-  function done_B () { 
-    for(numero_B=1;numero_B<5;numero_B++) {  
-      let borro_B= document.querySelector(`.B${numero_B}`);
-      borro_B.removeChild(borro_B.firstElementChild);
-      borro_B.insertAdjacentHTML('afterbegin', `<img id="logo_Resuelto" src="assets/images/DONE.jpg" alt="¡Bien hecho!"/>`);
-    }
-  };
-           
-  function done_C () { 
-    for(numero_C=1;numero_C<5;numero_C++) {  
-      let borro_C= document.querySelector(`.C${numero_C}`);
-      borro_C.removeChild(borro_C.firstElementChild);
-      borro_C.insertAdjacentHTML('afterbegin', `<img id="logo_Resuelto" src="assets/images/DONE.jpg" alt="¡Bien hecho!"/>`);
-    }
-  };
-
-
-  function done_D () { 
-    for(numero_D=1;numero_D<5;numero_D++) {  
-      let borro_D= document.querySelector(`.D${numero_D}`);
-      borro_D.removeChild(borro_D.firstElementChild);
-      borro_D.insertAdjacentHTML('afterbegin', `<img id="logo_Resuelto" src="assets/images/DONE.jpg" alt="¡Bien hecho!"/>`);
-    }
-  };
-
 
 
 
@@ -239,90 +179,67 @@ window.onload = () => {
 
 
 
+  //VALORANDO JUGADA
 
-  //LANZANDO UNA JUGADA 
-
-  resultado = (a) => {
-
-    console.log(`Jugada hasta ahora ${jugada}`);
-
-
-    //para el logo A-------------------------------
-
-    if (jugada[0]===ganadora_A[0] & jugada[1]===ganadora_A[1] & jugada[2]===ganadora_A[2] & jugada[3]===ganadora_A[3]) {
+    let prev = "";
+    let resultadoUno = "A1";
+    let resultadoDos = "C2";
+    let resultadoTres = "D3";
+    let resultadoCuatro = "B4";
   
-        done_A();
+    const equals = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  
+  
+    let checkMovement = () => {
+      jugada = [];
+      jugada.push(resultadoUno, resultadoDos, resultadoTres,resultadoCuatro);
+  
+      if(equals(jugada, ganadora_A)){      
         level++;
         pintarDatos(0);
         ganadora_A = ["resuelto_A"];
-        win();      
-      } 
-
-
-    
-    //para el logo B-------------------------------
-
-    if (jugada[0]===ganadora_B[0] & jugada[1]===ganadora_B[1] & jugada[2]===ganadora_B[2] & jugada[3]===ganadora_B[3]) {
-      
-      done_B();
-      level++;
-      pintarDatos(3);
-      ganadora_B = ["resuelto_B"];
-      win();       
-      } 
-
-
-    //para el logo C-------------------------------
-
-    if (jugada[0]===ganadora_C[0] & jugada[1]===ganadora_C[1] & jugada[2]===ganadora_C[2] & jugada[3]===ganadora_C[3]) {
-      console.log("BIEN_C");
-
-      done_C();
-      level++;
-      pintarDatos(1);
-      ganadora_C = ["resuelto_C"];
-      win();     
-      } 
-
-
-    //para el logo D-------------------------------
-
-    if (jugada[0]===ganadora_D[0] & jugada[1]===ganadora_D[1] & jugada[2]===ganadora_D[2] & jugada[3]===ganadora_D[3]) {
-      console.log("BIEN_D");
-      
-      done_D();
-      level++;
-      pintarDatos(2);
-      ganadora_D = ["resuelto_D"];
-      win();    
-      }       
-
-
-        
-
-
-
-        
-   //CIERRE DE LANZANDO UNA JUGADA   
-
-  };
-
-
- 
-
-
+        win();    
+      };
   
+      if(equals(jugada, ganadora_B)){
+        level++;
+        pintarDatos(3);
+        ganadora_B = ["resuelto_B"];
+        win();     
+      };
+  
+      if(equals(jugada, ganadora_C)){
+        level++;
+        pintarDatos(1);
+        ganadora_C = ["resuelto_C"]; 
+        win();  
+      };
+  
+      if(equals(jugada, ganadora_D)){
+        level++;
+        pintarDatos(2);
+        ganadora_D = ["resuelto_D"];
+        win();  
+        
+      };
+
+      if(equals(jugada, ganadora_A) || equals(jugada, ganadora_B) || equals(jugada, ganadora_C) || equals(jugada, ganadora_D)){
+          
+          win();  
+      };
+    }
+  
+  //CIERRE VALORANDO JUGADA
+
+
+
 
 
   //SWIPER CREACIÓN DE CUBOS------------------------------------------
 
-
-  // DESISTO DE INTENTARLO CON "FOR" Y GENERO LOS CUATRO CUBOS POR SEPARADO
-
-
-
    //CUBO UNO------------------------------------------
-
+    
+    
      var swiper = new Swiper(`.mySwiper1`, {
       effect: "cube",
       grabCursor: true,
@@ -333,21 +250,37 @@ window.onload = () => {
         slideShadows: true,
       },
 
-      on: {
-        slideChangeTransitionEnd: function () {
-          let detectaUno = document.querySelectorAll(`.mySwiper1 .swiper-slide-active`);
-          let resultadoUno = detectaUno[0].classList[0];
-          console.log(`resultado del cubo uno:${resultadoUno}`);
-          jugada.splice(0,1,resultadoUno);       
-          resultado (jugada,ganadora_A);          
+      on: {        
+        slideChange: function () {
+          switch (this.activeIndex) {
+            case 1, 5:
+              resultadoUno = "A1"; //IloveNY
+              break;
+            case 2:
+                resultadoUno = "B1"; //renault
+                break;
+            case 3:
+              resultadoUno = "C1"; //psoe
+              break;
+            case 4:
+              resultadoUno = "D1"; //windows
+              break;
+            default:
+              break;
+          }
+          console.log(resultadoUno);
+          if(prev!=resultadoUno){
+            prev=resultadoUno;
+            checkMovement();
+          }
         },
       },
     });
     
 
   //CUBO DOS------------------------------------------ 
-
-    var swiper = new Swiper(`.mySwiper2`, {
+    
+    var swiper2 = new Swiper(`.mySwiper2`, {
       effect: "cube",
       grabCursor: true,
       loop: true,
@@ -358,12 +291,30 @@ window.onload = () => {
       },
 
       on: {
-        slideChangeTransitionEnd: function () {
-          let detectaDos = document.querySelectorAll(`.mySwiper2 .swiper-slide-active`);      
-          let resultadoDos = detectaDos[0].classList[0];
-          console.log(`resultado del cubo dos:${resultadoDos}`);
-          jugada.splice(1,1,resultadoDos);
-          resultado (jugada,ganadora_A); 
+        slideChange: function () {
+          
+          //console.log(this.activeIndex)
+          switch (this.activeIndex) {
+            case 1, 5:
+              resultadoDos = "C2"; //psoe
+              break;
+            case 2:
+                resultadoDos = "A2"; //NY
+                break;
+            case 3:
+              resultadoDos = "D2"; //windows
+              break;
+            case 4:
+              resultadoDos = "B2"; //renault
+              break;
+            default:
+              break;
+          }
+          console.log(resultadoDos);
+          if(prev!=resultadoDos){
+            prev=resultadoDos;
+            checkMovement();
+          }
 
         },
       },
@@ -371,8 +322,8 @@ window.onload = () => {
 
 
     //CUBO TRES------------------------------------------ 
-
-    var swiper = new Swiper(`.mySwiper3`, {
+   
+    var swiper3 = new Swiper(`.mySwiper3`, {
       effect: "cube",
       grabCursor: true,
       loop: true,
@@ -383,20 +334,37 @@ window.onload = () => {
       },
 
       on: {
-        slideChangeTransitionEnd: function () {
-          let detectaTres = document.querySelectorAll(`.mySwiper3 .swiper-slide-active`);      
-          let resultadoTres = detectaTres[0].classList[0];
-          console.log(`resultado del cubo tres:${resultadoTres}`);
-          jugada.splice(2,1,resultadoTres);
-          resultado (jugada,ganadora_A); 
+        slideChange: function () {
+
+          switch (this.activeIndex) {
+            case 1, 5:
+              resultadoTres = "D3"; //windows 
+              break;
+            case 2:
+                resultadoTres = "B3"; //renault 
+                break;
+            case 3:
+              resultadoTres = "A3"; //NY
+              break;
+            case 4:
+              resultadoTres = "C3"; //psoe
+              break;
+            default:
+              break;
+          }
+          console.log(resultadoTres);
+          if(prev!=resultadoTres){
+            prev=resultadoTres;
+            checkMovement();
+          }
         },
       },
     });
 
 
     //CUBO CUATRO------------------------------------------ 
-
-    var swiper = new Swiper(`.mySwiper4`, {
+    
+    var swiper4 = new Swiper(`.mySwiper4`, {
       effect: "cube",
       grabCursor: true,
       loop: true,
@@ -407,12 +375,30 @@ window.onload = () => {
       },
 
       on: {
-        slideChangeTransitionEnd: function () {
-          let detectaCuatro = document.querySelectorAll(`.mySwiper4 .swiper-slide-active`);      
-          let resultadoCuatro = detectaCuatro[0].classList[0];
-          console.log(`resultado del cubo cuatro:${resultadoCuatro}`);
-          jugada.splice(3,1,resultadoCuatro);
-          resultado (jugada,ganadora_A); 
+        slideChange: function () {
+
+          switch (this.activeIndex) {
+            case 1, 5:
+              resultadoCuatro = "B4"; //renault 
+              break;
+            case 2:
+                resultadoCuatro = "C4"; //psoe
+                break;
+            case 3:
+              resultadoCuatro = "D4"; //windows 
+              break;
+            case 4:
+              resultadoCuatro = "A4"; //NY 
+              break;
+            default:
+              break;
+          }
+          console.log(resultadoCuatro);
+          if(prev!=resultadoCuatro){
+            prev=resultadoCuatro;
+            checkMovement();
+          }
+          
         },
       },
     });
@@ -420,31 +406,31 @@ window.onload = () => {
     //AQUÍ FINALIZA LA CREACIÓN DE CUBOS
 
 
- 
-    
-
-      
-
 
     //RESETEA EL JUEGO
 
     let reinicia = document.querySelector("#reseteo");
 
     reinicia.addEventListener("click", () => {
-      
       location.reload();
     });
 
 
+    //RESETEA EL JUEGO EN RESPONSIVE
 
+    let reinicia_res = document.querySelector(".reset_res");
 
+    reinicia_res.addEventListener("click", () => {
+       location.reload();
+     });
+  
 
 
 
 
   //CIERRE DEL WINDOW ON LOAD (NO QUITAR)
 
-};
+}
 
 
 

@@ -1,40 +1,51 @@
 //TIPOGRAFÍAS
 
 
-//Rubik
+//DM sans
 
 @font-face 
-    font-family: 'Rubik'
-    src: url('../fonts/Rubik-Bold.woff2') format('woff2'), url('../fonts/Rubik-Bold.woff') format('woff')
-    font-weight: bold
-    font-style: normal
-    font-display: swap
-
-
-@font-face 
-    font-family: 'Rubik'
-    src: url('../fonts/Rubik-Regular.woff2') format('woff2'), url('../fonts/Rubik-Regular.woff') format('woff')
+    font-family: 'dm_sansbold'
+    src: url('../fonts/dmsans-bold-webfont.woff2') format('woff2'), url('../fonts/dmsans-bold-webfont') format('woff')
     font-weight: normal
     font-style: normal
-    font-display: swap
+
 
 
 //Estilos 
     
 h1  
-    font-family: Rubik
-    font-weight: bold
+    font-family: dm_sansbold
+    font-weight: normal
     font-size: 2.25em 
     line-height: calc(1ex / 0.48)
     color: $blanco
     padding-left: 0.5em
 
+
 h2
-    font-family: Rubik
+    font-family: dm_sansbold
     font-weight: normal
-    font-size: 1.3em 
+    font-size: 1.5em 
     line-height: calc(1ex / 0.48)
     color: $blanco
+    @media screen and (max-width: $tablet)
+        font-size: 1.4em
+    @media screen and (max-width: $movil)
+        font-size: 1.3em
 
-.bold
-    font-weight: bold
+
+p
+    align-self: flex-end
+    font-family: dm_sansbold
+    font-weight: normal
+    font-size: 1.1em 
+    line-height: calc(1.2ex / 0.48)
+    color: $negro
+    @media screen and (max-width: $tablet)
+        font-size: 1.05em
+    @media screen and (max-width: $movil)
+        font-size: 0.95em
+    
+
+
+
