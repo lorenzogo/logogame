@@ -357,7 +357,7 @@ body {
 
 @media screen and (max-width: 414px) {
   body {
-    padding-top: 2em;
+    padding-top: 1em;
     font-size: 14px;
   }
 }
@@ -423,7 +423,7 @@ main {
 
 @media screen and (max-width: 414px) {
   .logo {
-    height: 35px;
+    height: 30px;
   }
 }
 
